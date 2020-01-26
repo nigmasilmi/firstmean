@@ -1,0 +1,5 @@
+reignfstest_job1:
+    tags:
+        -ci
+    script:
+        -echo Hello Automation World
