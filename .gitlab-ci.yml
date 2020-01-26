@@ -1,5 +1,3 @@
-reignfstest_job1:
-    tags:
-        -ci
-    script:
-        -echo Hello Automation World
+reignfstest_job1: 
+    script: "-echo Hello Automation World"
+    tags: "-ci"
