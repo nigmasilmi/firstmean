@@ -27,7 +27,7 @@ test:
 deploy_prod:
   stage: deploy
   environment:
-    name: production
+    name: development
     url: $FIREBASE_URL
   only:
     - master
