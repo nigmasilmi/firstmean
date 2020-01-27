@@ -4,10 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "builddev": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "predeploy": "firebase use --token $FIREBASE_DEPLOY_KEY $CI_ENVIRONMENT_SLUG",
+    "deploy": "firebase --non-interactive --token $FIREBASE_DEPLOY_KEY"
   },
   "private": true,
   "dependencies": {
@@ -28,10 +31,11 @@
     "@angular/cli": "~8.3.3",
     "@angular/compiler-cli": "~8.2.4",
     "@angular/language-service": "~8.2.4",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "firebase-tools": "^7.12.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",

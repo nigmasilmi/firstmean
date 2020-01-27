@@ -1,5 +1,20 @@
-reignfstest_job1:
-    tags:
-        ['ci']
+image: node:latest
+
+cache:
+    paths:
+        - node_modules/
+
+stages:
+    - deploy
+  
+  
+deploy:
+    stage: deploy
     script:
-        -echo Hello Automation 
+      - npm install
+      - npm run builddev
+      - npm run deploy
+    environment:
+      name: dev-deploy
+    only:
+    - master
