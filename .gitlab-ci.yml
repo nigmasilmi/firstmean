@@ -1,5 +1,12 @@
 image: node:10.16.0
 
+include:
+  - template: Code-Quality.gitlab-ci.yml
+  - template: SAST.gitlab-ci.yml
+  - template: Container-Scanning.gitlab-ci.yml
+  - template: Dependency-Scanning.gitlab-ci.yml
+
+
 stages:
   - install
   - test
@@ -18,7 +25,6 @@ install:
     paths:
       - node_modules/
 
-
 tests:
   stage: test
   variables:
@@ -33,6 +39,8 @@ tests:
   script:
     - npm run test:ci
   coverage: '/Statements.*?(\d+(?:\.\d+)?)%/'
+
+
 
 # deploy:
 #     stage: deploy
