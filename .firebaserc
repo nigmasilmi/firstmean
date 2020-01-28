@@ -1,7 +1,5 @@
 {
   "projects": {
-    "default": "reignfstest",
-    "dev-deploy": "reignfstest",
-    "production": "reignfstest",
+    "reignfstest": "reignfstest"
   }
 }
