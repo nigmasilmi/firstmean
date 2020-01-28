@@ -4,13 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
-    "builddev": "ng build",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "predeploy": "firebase use --token $FIREBASE_DEPLOY_KEY $CI_ENVIRONMENT_SLUG",
-    "deploy": "firebase --non-interactive --token $FIREBASE_DEPLOY_KEY"
+    "build-prod": "ng build --prod",
+    "test-ci": "ng test --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox",
+    "e2e-ci": "ng e2e --protractor-config=e2e/protractor-ci.conf.js",
+    "deploy": "firebase deploy --token $FIREBASE_DEPLOY_KEY --non-interactive"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +45,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
+    "puppeteer": "^2.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
