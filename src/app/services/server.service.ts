@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { News } from '../models/news';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { News } from "../models/news";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ServerService {
   news: News[] = [];
@@ -11,7 +11,7 @@ export class ServerService {
 
   getNews() {
     this.http
-      .get<{ message: string; news: News[] }>('localhost:3000/api/news')
+      .get<{ message: string; news: News[] }>("localhost:3000/api/news")
       .subscribe(resBody => {
         this.news = resBody.news;
       });
