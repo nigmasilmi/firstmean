@@ -4,6 +4,10 @@ body {
     width: 90%;
 }
 
+#hiddenForE2E {
+    opacity: 0;
+}
+
 body {
     margin: auto;
     font-family: Roboto, "Helvetica Neue", sans-serif;
