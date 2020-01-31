@@ -1,14 +1,19 @@
 <section id="newsFeed">
   <div class="newsFeedWrapper">
     <!-- <button mat-raised-button color="primary" (click)="startDB()">Show me the News!</button> -->
+    <button mat-raised-button color="primary" (click)="startDB()">Make these geeky articles persistent!</button>
+    <div class="madeToDB" *ngIf="savedTheGeeky">
+      Now These news are in your Data Base, read and recycle!
+      <mat-divider></mat-divider>
+    </div>
     <mat-list role="list">
       <mat-list-item *ngFor="let item of news">
         <div class="itemWrapper" (click)="navigateTo(item.story_url)">
           <div class="title">{{ item.story_title }}</div>
           <div class="author">{{ item.author }}</div>
-          <div class="createdAt">{{ item.author }}</div>
+          <div class="createdAt">{{ item.created_at | date: 'dd/MM/yyyy' }}</div>
         </div>
-        <button class="trash" (click)="onDelete(item.story_id)" mat-icon-button>
+        <button class="trash" (click)="onDelete(item._id)" mat-icon-button>
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>

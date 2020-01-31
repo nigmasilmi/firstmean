@@ -28,51 +28,28 @@ mongoose.connect('mongodb+srv://nig:NgTJunHJDxxHLUAq@cluster0-czjkv.mongodb.net/
     console.log('Connection failed, debug and try again');
   });
 
-// first time populating db
-app.post('/api/news', (req, res, next) => {
 
-  const news = req.body;
 
-  cleanedData.forEach(element => {
-    const newDoc = new News({
-      author: element.author,
-      created_at: element.created_at,
-      story_title: element.story_title,
-      story_url: element.story_url
-    });
-
-    newDoc.save();
-
+app.post("/api/news", (req, res, next) => {
+  const newDoc = new News({
+    author: req.body.author,
+    created_at: req.body.created_at,
+    story_title: req.body.story_title,
+    story_url: req.body.story_url,
   });
-  res.send('done populating the database');
-
+  newDoc.save();
 });
 
-
-app.get('/api/news', (req, res, next) => {
-
-  // TODO: QUERY FOR ALL DOCUMENTS IN DB AND SORT BY CREATED_AT
-  const dummyNews = [{
-      story_id: 1,
-      title: 'First dummy news',
-      author: 'Fist dummy author',
-      story_url: {
-        value: 'https://sneak.berlin/20200129/starlink/'
-      }
-    },
-
-    {
-      story_id: 2,
-      title: 'Second dummy news',
-      author: 'Second dummy author',
-      story_url: {
-        value: 'https://godotengine.org/article/here-comes-godot-3-2'
-      }
-    },
-  ];
-  res.json({
-    data: dummyNews
+app.get("/api/news", (req, res, next) => {
+  News.find().then(documents => {
+    res.status(200).json({
+      news: documents
+    });
   });
+});
+
+app.delete('/api/news/:id', (req, res, next) => {
+  console.log(req.params.id);
 });
 
 

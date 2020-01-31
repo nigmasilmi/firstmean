@@ -11,6 +11,7 @@ import { ServerService } from '../../services/server.service';
 export class ClientComponent implements OnInit, OnDestroy {
   news: News[] = [];
   newSubscription: Subscription;
+  savedTheGeeky: boolean;
 
   constructor(private newService: ServerService) { }
 
@@ -25,11 +26,14 @@ export class ClientComponent implements OnInit, OnDestroy {
 
   startDB() {
     this.newService.populateDB();
+    this.savedTheGeeky = true;
   }
 
 
+
+
   // TODO: change the id property in the template accordingly
-  onDelete(storyId: number) {
+  onDelete(storyId: string) {
     console.log('deleting, sr');
     this.newService.deleteNews(storyId);
   }
