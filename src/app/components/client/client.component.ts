@@ -15,16 +15,20 @@ export class ClientComponent implements OnInit, OnDestroy {
   constructor(private newService: ServerService) { }
 
   ngOnInit() {
-    this.newService.getNews();
+    this.newService.firstDataLoad();
     this.newSubscription = this.newService
       .sendNewsToComp()
       .subscribe((newsComing: News[]) => {
         this.news = newsComing;
-        console.log('newsComing: ', newsComing);
       });
-    console.log(this.news);
   }
 
+  startDB() {
+    this.newService.populateDB();
+  }
+
+
+  // TODO: change the id property in the template accordingly
   onDelete(storyId: number) {
     console.log('deleting, sr');
     this.newService.deleteNews(storyId);

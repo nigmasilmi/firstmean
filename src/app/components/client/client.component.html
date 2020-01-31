@@ -1,13 +1,14 @@
 <section id="newsFeed">
-  <div clss="newsFeedWrapper">
+  <div class="newsFeedWrapper">
+    <!-- <button mat-raised-button color="primary" (click)="startDB()">Show me the News!</button> -->
     <mat-list role="list">
       <mat-list-item *ngFor="let item of news">
-        <div class="itemWrapper" (click)="navigateTo(item.story_url['value'])" target="_blank">
+        <div class="itemWrapper" (click)="navigateTo(item.story_url)">
           <div class="title">{{ item.story_title }}</div>
           <div class="author">{{ item.author }}</div>
           <div class="createdAt">{{ item.author }}</div>
         </div>
-        <button class="trash" (click)="onDelete(item.story_id)" mat-icon-button color="warn">
+        <button class="trash" (click)="onDelete(item.story_id)" mat-icon-button>
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
