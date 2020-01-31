@@ -1,5 +1,8 @@
 const express = require('express');
 
+
+// Functionality for serving from this app
+
 const app = express();
 
 app.use((req, res, next) => {
@@ -32,5 +35,7 @@ app.use('/api/news', (req, res, next) => {
     data: dummyNews
   });
 });
+
+
 
 module.exports = app;
